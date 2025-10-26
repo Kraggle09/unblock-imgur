@@ -16,7 +16,7 @@ It does not work with Imgur embedded galleries, so those may either not show up 
 
 ## How to install
 (This process will be simplified in the future, for now it's pretty manual. Also, this probably doesn't work on mobile, sorry)  
-Download this extension from the releases page, and unzip it.
+Download this extension from [the releases page](https://github.com/Kraggle09/unblock-imgur/releases), and unzip it.
 
 ### Chrome, Edge, and other Chromium browsers
 Click the 3 dots in the top right corner, extensions, and manage extensions. 
