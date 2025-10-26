@@ -1,7 +1,7 @@
 var reloadCount = 0;
 
 // Redirect imgur.com requests to Duckduckgo proxy
-chrome.webRequest.onBeforeRequest.addListener(function (details) {
+browserAPI.webRequest.onBeforeRequest.addListener(function (details) {
     var redirectUrl = "https://proxy.duckduckgo.com/iu/?u=" + details.url.replace("https://", "http://");
     redirectUrl = redirectUrl.replace(/ref=.*&|ref=.*$/, "");
     return {redirectUrl: redirectUrl};
@@ -9,17 +9,14 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
     urls: ["*://*.imgur.com/*"]
 }, ["blocking"]);
 
-chrome.webRequest.onHeadersReceived.addListener(function (details) {
+browserAPI.webRequest.onHeadersReceived.addListener(function (details) {
     // If HTTP status is not OK, try again
     if (details.frameId === 0 && details.statusCode !== 200 && reloadCount < 2) {
         var code = 'window.location.reload();';
-        chrome.tabs.executeScript(
-            details.tabId,
-            {code: code},
-            function (results) {
-                var e = chrome.runtime.lastError;
-            }
-        );
+        browserAPI.tabs.executeScript(details.tabId, {code: code})
+            .catch(error => {
+                console.log('Error executing script:', error);
+            });
         reloadCount++;
     }
 

@@ -2,7 +2,13 @@
   "manifest_version": 2,
   "name": "Unblock Imgur",
   "description": "Loads Imgur content from DuckDuckGo proxy with basic functionality",
-  "version": "0.2.7",
+  "version": "0.2.8",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "unblock-imgur@kraggle09.github.io",
+      "strict_min_version": "57.0"
+    }
+  },
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -14,9 +20,11 @@
   "content_scripts": [
     {
       "matches": [
-        "*://proxy.duckduckgo.com/*"
+        "*://proxy.duckduckgo.com/*",
+        "<all_urls>"
       ],
       "js": [
+        "browser-polyfill.js",
         "jquery.min.js",
         "content.js"
       ]
@@ -24,6 +32,7 @@
   ],
   "background": {
     "scripts": [
+      "browser-polyfill.js",
       "jquery.min.js",
       "background.js"
     ]
