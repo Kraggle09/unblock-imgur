@@ -1,3 +1,5 @@
+**This repository has been archived. It was my attempt at a bandage fix for the Imgur ban in the UK, and I used AI for it. I don't like using AI, and since this was such a low effort attempt, I decided to archive it.**
+
 # unblock-imgur
 
 Loads Imgur content from DuckDuckGo proxy with basic functionality
